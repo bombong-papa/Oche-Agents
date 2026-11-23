@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+.poa/
+.DS_Store
+
+# Local development notes and internal design documents
+/Plans/
+/Architectures/
+/design/
+/WORKLOG.md

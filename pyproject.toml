@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "poa-agent-core"
+version = "0.1.0"
+description = "Local-first personal AI routing decision core"
+requires-python = ">=3.9"
+dependencies = [
+    "PyYAML>=6.0,<7",
+]
+
+[project.scripts]
+poa = "poa_core.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

@@ -1,0 +1,21 @@
+schema_version: 1
+project_id: local-demo
+
+providers:
+  - id: worker-writing
+    type: official_api
+    capabilities: [writing, analysis]
+    priority: 10
+  - id: worker-research
+    type: official_api
+    capabilities: [research, analysis]
+    priority: 20
+  - id: worker-coding
+    type: official_api
+    capabilities: [coding, analysis]
+    priority: 30
+
+routing:
+  default: worker-writing
+  fallback_order: [worker-research, worker-coding]
+  require_confirmation_below: 0.8
