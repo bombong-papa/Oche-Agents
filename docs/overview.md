@@ -30,12 +30,19 @@ CLI / future UI or IDE client
        ├── Parent-session orchestrator
        │     └── Scoped child-agent sessions
        ├── Local task classifier
-       ├── Policy-based router
-       ├── Provider and tool adapters
+       ├── Policy router → execution profile
+       ├── Provider connection + model catalog
+       ├── Model-bound inference profiles
        └── Session/context ledger
 ```
 
 The Core is intended to be the single place where routing policy, session relationships, provider state, and context permissions are enforced. Clients should not hold provider credentials or independently decide which agents may run.
+
+### Provider, model, and inference selection
+
+The target design separates a provider connection (service/account), a provider-scoped model ID, and an **execution profile** that binds a model to validated inference settings. One connection may expose multiple models, and one model may have multiple profiles such as low- and high-effort settings. The router selects an allowed profile rather than selecting only a provider.
+
+Inference controls are model-specific. The adapter validates support and maps a limited normalized effort preference to the provider's native API. Unsupported controls are rejected rather than silently ignored; fallback to another model or effort profile is visible in the result. These are design goals, not current CLI features: the existing prototype only creates a provider-level route plan.
 
 ### Project, topic, and session model
 
